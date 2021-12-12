@@ -14,7 +14,7 @@ public class ASSISGNMENT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("fuck cpg");
+        System.out.println("fuck shafiq :D");
     }
     
 }
