@@ -4,6 +4,9 @@
  */
 package assisgnment;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -12,25 +15,14 @@ import java.util.Scanner;
  */
 public class login {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        
-        String username;
-        String password;
-        System.out.print("Enter username: ");
-        username = input.next();
-        System.out.print("Enter password: ");
-        password = input.next();
-        
-        // enter database
-//        try (Connection connection = DriverManager.getConnection(url/* url database */, username, password)) {
-//        System.out.println("Database connected!");
-//        } catch (SQLException e) {
-//        throw new IllegalStateException("Cannot connect the database!", e);
-}
-        
-        
-        
-        
+
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002")) {
+            System.out.println("Database connected!");
+        } catch (
+                SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+    }
 }
     
 
