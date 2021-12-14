@@ -14,7 +14,7 @@ public class q4 {
         for (int i = 0;i<2;i++){
             for (int j = 0;j<length;j++){
                 System.out.println("Array "+(i+1));
-                System.out.print("Enter the value for element "+(j+1)+" ");
+                System.out.print("Enter the value for element "+(j+1)+" : ");
                 a[i][j]= input.nextInt();
             }
         }
