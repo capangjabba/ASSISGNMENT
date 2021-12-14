@@ -22,7 +22,7 @@ public class q4 {
         int [] location = new int[length];
         for(int i = 0;i<length;i++){
             for (int j = 0;j<length;j++){
-                ans[i][j] = a[0][i]*a[1][j];
+                ans[i][j] = a[0][i]^a[1][j];
                 System.out.print(ans[i][j]+" ");
             }
             System.out.println();
