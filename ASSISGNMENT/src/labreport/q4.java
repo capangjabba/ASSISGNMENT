@@ -28,7 +28,7 @@ public class q4 {
             }
             System.out.println();
         }
-        // the algorithm for max sum
+        // the algorithm for max sum arghhhh
 
 
 
