@@ -6,9 +6,9 @@ public class q4 {
 
 
     public static void main(String[] args) {
-        int length;
+        int length, sum, max_sum=0;
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter number of elements: ");
+        System.out.print("Enter number of elements : ");
         length = input.nextInt();
         int[][] a = new int[2][length];
         for (int i = 0;i<2;i++){
@@ -27,5 +27,33 @@ public class q4 {
             }
             System.out.println();
         }
+        for (int i = 0;i<length;i++){
+            for (int j = 0;j<length;j++){
+                if (j==i){
+                    continue;
+                }
+                for (int k = 0;k<length;k++){
+                    if (k==i || k==j){
+                        continue;
+                    }
+                    for (int l = 0;l<length;l++){
+                        if (l==i || l==j || l==k){
+                            continue;
+                        }
+                        for (int m = 0;m<length;m++){
+                            if (m==i || m==j || m==k || m==l){
+                                continue;
+                            }
+                            sum = ans[0][i]+ ans[1][j] + ans[2][k] + ans[3][l] + ans[4][m];
+                            if (sum>max_sum){
+                                max_sum=sum;
+                                System.out.println("coordinate: "+i+j+k+l+m);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("max sum : "+ max_sum);
     }
 }
