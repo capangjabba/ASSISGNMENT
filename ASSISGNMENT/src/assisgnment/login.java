@@ -27,7 +27,7 @@ public class login {
             String password = input.next();
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
-                    System.out.println("WE IN");
+                    System.out.println("WE IN"); // got into system
                 }
             }
 
