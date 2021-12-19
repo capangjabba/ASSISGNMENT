@@ -3,24 +3,8 @@ package labreport;
 import java.util.Scanner;
 
 public class q4 {
-
-
-    public static void main(String[] args) {
-        int length, sum, max_sum=0;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter number of elements : ");
-        length = input.nextInt();
-
-        int[][] a = new int[2][length];
-        for (int i = 0;i<2;i++){
-            for (int j = 0;j<length;j++){
-                System.out.println("Array "+(i+1));
-                System.out.print("Enter the value for element "+(j+1)+" : ");
-                a[i][j]= input.nextInt();
-            }
-        }
+    public static int[][] xor(int[][] a,int length){
         int [][] ans = new int[length][length];
-        int[] coordinate = {100,100,100,100,100};
         for(int i = 0;i<length;i++){
             for (int j = 0;j<length;j++){
                 ans[i][j] = a[0][i]^a[1][j];
@@ -28,8 +12,10 @@ public class q4 {
             }
             System.out.println();
         }
-        // the algorithm for max sum arghhhh
-
+        return ans;
+    }
+    public static int maxSum(int[][] ans,int length){
+        int sum, max_sum=0;
         switch (length){
             case 1:
                 max_sum+= ans[0][0];
@@ -333,8 +319,25 @@ public class q4 {
                 break;
 
         }
+        return max_sum;
+    }
 
+    public static void main(String[] args) {
+        int length;
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter number of elements : ");
+        length = input.nextInt();
 
-        System.out.println("max sum : "+ max_sum);
+        int[][] a = new int[2][length];
+        for (int i = 0;i<2;i++){
+            for (int j = 0;j<length;j++){
+                System.out.println("Array "+(i+1));
+                System.out.print("Enter the value for element "+(j+1)+" : ");
+                a[i][j]= input.nextInt();
+            }
+        }
+        int [][] ans = xor(a,length);
+
+        System.out.println("max sum : "+ maxSum(ans,length));
     }
 }
