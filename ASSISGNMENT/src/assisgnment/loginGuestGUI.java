@@ -12,6 +12,8 @@ public class loginGuestGUI extends JFrame{
     private JPasswordField passwordTextField;
     private JLabel paswordLabel;
     private JButton loginButton;
+    private JPanel titlePanel;
+    private JLabel titleLabel;
 
     public loginGuestGUI(String title){
         super(title);
