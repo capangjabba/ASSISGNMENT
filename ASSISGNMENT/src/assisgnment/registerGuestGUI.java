@@ -3,29 +3,30 @@ package assisgnment;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class loginGuestGUI extends JFrame{
+public class registerGuestGUI extends JFrame{
     private JPanel mainPanel;
     private JTextField usernameTextField;
+    private JTextField passwordTextField;
     private JLabel usernameLabel;
-    private JPasswordField passwordTextField;
-    private JLabel paswordLabel;
+    private JLabel passwordLabel;
+    private JPanel registerTitlePanel;
+    private JLabel registerTitle;
+    private JLabel registerTitle2;
     private JButton loginButton;
-    private JPanel titlePanel;
-    private JLabel titleLabel;
-    private JButton staffButton;
     private JButton registerButton;
-    private JLabel loginLabel;
 
-    public loginGuestGUI(String title){
+    public registerGuestGUI(String title){
         super(title);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(mainPanel);
         this.pack();
-
-        loginButton.addActionListener(new ActionListener() {
+        registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try  {
@@ -34,16 +35,15 @@ public class loginGuestGUI extends JFrame{
                     System.out.println("Database connected!");
                     // CREATE STATEMENT FOR MYSQL
                     Statement myStmt = connection.createStatement();
-                    // CREATE QUERY
-                    ResultSet myRs = myStmt.executeQuery("SELECT * FROM guest");
+
                     String username = usernameTextField.getText();
                     String password = passwordTextField.getText();
-                    // FIND EQUAL USERNAME AND PASSWORD
-                    while (myRs.next()) {
-                        if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
-                            System.out.println("WE IN"); // GOT INTO SYSTEM
-                        }
-                    }
+                    // CREATE QUERY INSTRUCTIONS
+                    String sql = "INSERT INTO guest "
+                            + "(username,password)"
+                            + "values ('"+username+"','"+password+"')";
+                    myStmt.executeUpdate(sql);
+                    System.out.println("You are now registered. ");
 
                 } catch (
                         SQLException a) {
@@ -54,7 +54,7 @@ public class loginGuestGUI extends JFrame{
     }
 
     public static void main(String[] args) {
-        JFrame frame = new loginGuestGUI("CAPANG SCREEN CINEMA");
+        JFrame frame = new registerGuestGUI("CAPANG SCREEN CINEMA");
         frame.setVisible(true);
 
     }
