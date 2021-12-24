@@ -26,6 +26,7 @@ public class q2 {
        String m = powers2(input);
        
        System.out.print(m);
+       System.out.println();
     }
     
     static String powers2(int x)
@@ -54,18 +55,18 @@ public class q2 {
                 if(i==j-1)
                 {
                     int z = (int) Math.pow(2,i);
-                    System.out.print(z);
+                    g+=Integer.toString(z);
                 }
                 else
                 {
                     int z = (int) Math.pow(2,i);
-                    System.out.print(z + " + ");
+                    g+=Integer.toString(z) + " + ";
+                    
                 }
                 
             }
         }
         
-        System.out.println();
         return g;
     }
 }
