@@ -56,7 +56,7 @@ public class MainUI {
                 description = myRs.getString("description");
                 cast = myRs.getString("cast");
                 date = String.valueOf(myRs.getDate("release_date"));
-                Object[]{id,title,description,cast,date};
+                Object[]{id,title,description,cast,date}; //ERROES
             }
 
         } catch (
