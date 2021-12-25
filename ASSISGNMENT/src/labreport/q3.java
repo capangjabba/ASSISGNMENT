@@ -7,9 +7,9 @@ public class q3 {
   
     public static void main(String[] args){
     Scanner scanner = new Scanner(System.in);
-    System.out.print("Enter String: ");
+    System.out.print("s: ");
     String s = scanner.nextLine();
-    System.out.print("Enter Number: ");
+    System.out.print("k: ");
     int k = scanner.nextInt();
     int first = 0;
     int last = 0;
