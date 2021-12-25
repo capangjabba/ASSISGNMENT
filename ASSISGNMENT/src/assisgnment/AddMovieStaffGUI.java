@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -178,7 +179,6 @@ public class AddMovieStaffGUI extends javax.swing.JFrame {
                 
             }
             connection.close();
-
         } catch (
                 SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
@@ -196,18 +196,17 @@ public class AddMovieStaffGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         try{
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             System.out.println("Database connected!");
-            Statement myStmt = con.createStatement();
-            
-                                
+            Statement myStmt = connection.createStatement();
+            System.out.println(title+" "+cast+" "+description+" "+release_date+" ");
             // CREATE QUERY INSTRUCTIONS
             String sql = "INSERT INTO movie "
                     + "(movie_name,cast,description,release_date) "
-                    + "values ('"+title+"','"+cast+"','"+description+"','"+release_date+"')";
+                    + "VALUES ('"+title.getText()+"','"+cast.getText()+"','"+description.getText()+"','"+release_date.getText()+"')";
             myStmt.executeUpdate(sql);
             System.out.println("REGISTERED");
-            con.close();
+            connection.close();
         }catch(
                 SQLException e){
             
