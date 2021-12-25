@@ -15,6 +15,7 @@ public class ASSISGNMENT {
      */
     public static void main(String[] args) {
         System.out.println("fuck shafiq :D");
+        System.out.println("fuck");
     }
     
 }
