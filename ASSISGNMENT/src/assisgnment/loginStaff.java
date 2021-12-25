@@ -22,7 +22,7 @@ public class loginStaff {
             // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
-                    System.out.println("WE IN"); // GOT INTO SYSTEM
+                    System.out.println("WE IN"); // GOT INTO SYSTEM  balbalsdbad
                 }
             }
 
