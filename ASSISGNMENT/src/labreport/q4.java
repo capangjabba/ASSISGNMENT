@@ -3,14 +3,12 @@ package labreport;
 import java.util.Scanner;
 
 public class q4 {
-    public static int[][] xor(int[][] a,int length){
+    public static int[][] xor(int[] a,int[] b,int length){
         int [][] ans = new int[length][length];
         for(int i = 0;i<length;i++){
             for (int j = 0;j<length;j++){
-                ans[i][j] = a[0][i]^a[1][j];
-                System.out.print(ans[i][j]+" ");
+                ans[i][j] = a[i]^b[j];
             }
-            System.out.println();
         }
         return ans;
     }
@@ -328,15 +326,21 @@ public class q4 {
         System.out.print("Enter number of elements : ");
         length = input.nextInt();
 
-        int[][] a = new int[2][length];
+        int[] a = new int[length];
+        int[] b = new int[length];
+
         for (int i = 0;i<2;i++){
             for (int j = 0;j<length;j++){
                 System.out.println("Array "+(i+1));
                 System.out.print("Enter the value for element "+(j+1)+" : ");
-                a[i][j]= input.nextInt();
+                if (i == 0){
+                    a[j] = input.nextInt();
+                }else {
+                    b[j] = input.nextInt();
+                }
             }
         }
-        int [][] ans = xor(a,length);
+        int [][] ans = xor(a,b,length);
 
         System.out.println("max sum : "+ maxSum(ans,length));
     }
