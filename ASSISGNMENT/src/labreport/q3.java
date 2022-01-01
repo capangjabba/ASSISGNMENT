@@ -1,34 +1,33 @@
-
 package labreport;
 
 import java.util.Scanner;
 
 public class q3 {
-public static void main(String[] args) {
-	Scanner input = new Scanner(System.in);
-	int calculate=0;
-	System.out.print("S :");
-	String s = input.next();
-	System.out.print("K :");
-	int k = input.nextInt();
-	for(int i=0; i<s.length(); i++){
-	    if('?'==s.charAt(i))
-		calculate++;
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		int calculate=0;
+		System.out.print("S :");
+		String s = input.next();
+		System.out.print("K :");
+		int k = input.nextInt();
+		for(int i=0; i<s.length(); i++){
+			if('?'==s.charAt(i))
+				calculate++;
+		}
+		if(s.length()>8 || calculate>3){
+			System.out.println("Maximum digits are only 8 including maximum 3 wildcards ");
+		}
+		else
+			System.out.println( Q3(s,k));
 	}
-	if(s.length()>8 || calculate>3){
-	    System.out.println("Maximum digits are only 8 including maximum 3 wildcards ");
-	}
-	else
-            System.out.println( Q3(s,k));
-    }
-    
 
-    
-    public static int Q3(String s, int k){
-        int c=0;
+
+
+	public static int Q3(String s, int k){
+		int c=0;
 		String temp1, temp2, temp3;
 		boolean f1 = false, f2=false, f3=false;
-		
+
 		for(int i=0; i < s.length(); i++) { // loop
 			if(s.charAt(i) == '?') {
 				f1 = true;
