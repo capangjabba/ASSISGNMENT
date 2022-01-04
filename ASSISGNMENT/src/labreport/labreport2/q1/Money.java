@@ -14,6 +14,7 @@ public class Money {
 
     public Money(double money) {
         this.money = money;
+        sum+=money;
     }
     public Money(double[] a){
         money=0;
@@ -24,8 +25,9 @@ public class Money {
     }
 
     public void setMoney(double money) {
+        sum-=this.money;
         this.money = money;
-        sum+=money;
+        sum+=this.money;
 
     }
 

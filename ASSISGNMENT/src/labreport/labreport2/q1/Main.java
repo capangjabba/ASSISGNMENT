@@ -7,5 +7,6 @@ public class Main {
         a.String();
         Money b = new Money(18212);
         b.String();
+        System.out.println("Sum of money = "+ a.getSum());
     }
 }
