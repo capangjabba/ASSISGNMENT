@@ -40,7 +40,7 @@ public class Money {
     }
 
 
-    public void String() {
+    public String toString() {
         double ringgit = money / 100.0;
         int b100 = 0,b50 = 0,b20 = 0,b10 = 0,b5 = 0,b1 = 0,b05=0,b02=0,b01=0,b005=0,b001=0;
         if (ringgit / 100 >= 1) {
@@ -88,7 +88,7 @@ public class Money {
              b001 = (int) (ringgit / 0.01);
             ringgit = ringgit % 0.01;
         }
-        System.out.println("Amount = " + money + "(RM" + money / 100 + ")\n"
+        return "Amount = " + money + "(RM" + money / 100 + ")\n"
                 + "\nRM100 = " + b100
                 + "\nRM50 = " + b50
                 + "\nRM20 = " + b20
@@ -99,6 +99,6 @@ public class Money {
                 + "\nRM0.20 = " + b02
                 + "\nRM0.10 = " + b01
                 + "\nRM0.05 = " + b005
-                + "\nRM0.01 = " + b001);
+                + "\nRM0.01 = " + b001;
     }
 }
