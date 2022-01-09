@@ -189,14 +189,24 @@ public class addScreeningStaffGUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String hall = jComboBox1.getSelectedItem().toString();
+        String classHall = "";
+        String priceHall = "";
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             System.out.println("Database connected!");
             Statement myStmt = connection.createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT hall_name,class,price FROM hall");
+            while(myRs.next()){
+                if(myRs.getString("hall_name").equals(hall)){
+                    classHall = myRs.getString("class");
+                    priceHall = myRs.getString("price");
+                    break;
+                }
+            }
             // CREATE QUERY INSTRUCTIONS
             String sql = "INSERT INTO screening "
-                    + "(movie_name,hall_name,time,date) "
-                    + "VALUES ('"+movie.getText()+"','"+hall+"','"+time.getText()+"','"+date.getText()+"')";
+                    + "(movie_name,hall_name,time,date,price,class) "
+                    + "VALUES ('"+movie.getText()+"','"+hall+"','"+time.getText()+"','"+date.getText()+"','"+priceHall+"','"+classHall+"')";
             myStmt.executeUpdate(sql);
             String sql2 = "INSERT INTO availability (seat_name,hall_name,time) "
                     + "SELECT seat_name,hall_name,'"+time.getText()+"' "
