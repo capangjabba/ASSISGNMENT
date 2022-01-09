@@ -4,12 +4,22 @@
  */
 package assisgnment;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.SQLException;
+
+
 /**
  *
  * @author Asus
  */
 public class pickSeatCustGUI extends javax.swing.JFrame {
     private int screeningId;
+    String hall;
+    String date;
+    String time;
     /**
      * Creates new form pickSeatCustGUI
      */
@@ -55,6 +65,11 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setText("SHOW SEAT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -110,6 +125,27 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
+            System.out.println("Database connected!");
+            Statement myStmt = connection.createStatement();
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
+            while(myRs.next()){
+                if(screeningId == myRs.getInt("screening_id")){
+                    hall=myRs.getString("hall_name");
+                    date=myRs.getString("date");
+                    time=myRs.getString("time");
+                }
+            }
+            System.out.println(hall+" "+date+" "+time);
+
+        }catch(SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

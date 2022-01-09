@@ -130,7 +130,7 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             System.out.println("Database connected!");
-            System.out.println(NAME);
+ 
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
