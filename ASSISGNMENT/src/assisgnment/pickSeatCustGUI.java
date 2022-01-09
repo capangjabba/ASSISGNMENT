@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
@@ -140,7 +141,18 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
                     time=myRs.getString("time");
                 }
             }
+            myRs.close();
             System.out.println(hall+" "+date+" "+time);
+            
+            ResultSet myRs2 = myStmt.executeQuery("SELECT * FROM availability");
+            while(myRs2.next()){
+                if(myRs2.getString("hall_name").equals(hall) && myRs2.getString("time").equals(time) && myRs2.getString("date").equals(date)){
+                    String seat = myRs2.getString("seat_name");
+                    String tbData[]={seat};
+                    DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
+                    tblModel.addRow(tbData);
+                }
+            }
 
         }catch(SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
