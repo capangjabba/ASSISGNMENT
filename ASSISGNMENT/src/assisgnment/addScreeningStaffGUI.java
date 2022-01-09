@@ -208,8 +208,8 @@ public class addScreeningStaffGUI extends javax.swing.JFrame {
                     + "(movie_name,hall_name,time,date,price,class) "
                     + "VALUES ('"+movie.getText()+"','"+hall+"','"+time.getText()+"','"+date.getText()+"','"+priceHall+"','"+classHall+"')";
             myStmt.executeUpdate(sql);
-            String sql2 = "INSERT INTO availability (seat_name,hall_name,time) "
-                    + "SELECT seat_name,hall_name,'"+time.getText()+"' "
+            String sql2 = "INSERT INTO availability (seat_name,hall_name,time,date) "
+                    + "SELECT seat_name,hall_name,'"+time.getText()+"','"+date.getText()+"' "
                     + "FROM seat WHERE hall_name = "+hall;
             myStmt.executeUpdate(sql2);
 
