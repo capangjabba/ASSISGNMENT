@@ -161,6 +161,10 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String screening = screening_id.getText();
+        pickSeatCustGUI a = new pickSeatCustGUI();
+        a.setScreeningId(Integer. valueOf(screening));
+        a.show();
+        dispose();
         // call next page
     }//GEN-LAST:event_jButton2ActionPerformed
 
