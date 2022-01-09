@@ -51,7 +51,7 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "MOVIE NAME", "TIME", "DATE"
+                "ID", "MOVIE NAME", "TIME", "DATE", "PRICE", "CLASS"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -143,7 +143,9 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
                     String title = myRs.getString("movie_name");
                     String time = myRs.getString("time");
                     String date = String.valueOf(myRs.getDate("date"));
-                    String tbData[]={id,title,time,date};
+                    String price = myRs.getString("price");
+                    String classHall = myRs.getString("class");
+                    String tbData[]={id,title,time,date,price,classHall};
                     DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
                     tblModel.addRow(tbData);
                 }
