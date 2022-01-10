@@ -166,6 +166,7 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String seatChosen = seatTextField.getText();
         String [] seats = seatTextField.getText().split(",");
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
