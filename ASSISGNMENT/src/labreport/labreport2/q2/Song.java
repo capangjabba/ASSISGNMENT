@@ -79,7 +79,7 @@ public class Song {
         for (int a=0;a<5;a++){
             bruh+=song[j][a]+" ";
         }
-        if (j==20){
+        if (j==i-1){
             j=0;
         }else {
             j++;
@@ -88,17 +88,15 @@ public class Song {
     }
     public String next(){
         j++;
-        if (j>20){
+        if (j>=i){
             j=0;
         }
         String bruh="";
         for (int a=0;a<5;a++){
             bruh+=song[j][a]+" ";
         }
-        if (j==20){
+        if (j==i){
             j=0;
-        }else {
-            j++;
         }
         return bruh;
     }
@@ -106,13 +104,13 @@ public class Song {
     public String previous(){
         j--;
         if (j<0){
-            j=20;
+            j=i-1;
         }
         String bruh="";
         for (int a=0;a<5;a++){
             bruh+=song[j][a]+" ";
         }
-        if (j==20){
+        if (j==i-1){
             j=0;
         }else {
             j++;
