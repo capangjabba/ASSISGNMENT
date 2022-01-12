@@ -164,6 +164,8 @@ public class loginGuestGUI extends javax.swing.JFrame {
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
                     int guest_id = myRs.getInt("guest_id");
+                    paymentGuestGUI b = new paymentGuestGUI();
+                    b.setGuestId(guest_id);
                     // GOT INTO SYSTEM
                     movieCustGUI a = new movieCustGUI();
                     a.show();
