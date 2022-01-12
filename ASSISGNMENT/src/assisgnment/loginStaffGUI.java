@@ -164,7 +164,9 @@ public class loginStaffGUI extends javax.swing.JFrame {
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
                     System.out.println("WE IN"); // GOT INTO SYSTEM  balbalsdbad
-                    
+                    staffMainPageGUI a = new staffMainPageGUI();
+                    a.show();
+                    dispose();
                 }
             }
 
