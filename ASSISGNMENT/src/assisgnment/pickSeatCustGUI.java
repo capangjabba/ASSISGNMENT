@@ -178,6 +178,7 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
                 myStmt.executeUpdate(sql);
                 System.out.println(i);
             }
+            //ENTER FNB
         }catch(Exception exc){
                 exc.printStackTrace();
         }
