@@ -151,6 +151,10 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String fnb = comboText.getText();
+        paymentGuestGUI b = new paymentGuestGUI();
+        b.setFnb(fnb);
+        b.show();
+        dispose();
         // ENTER PAYMENT
     }//GEN-LAST:event_jButton2ActionPerformed
 
