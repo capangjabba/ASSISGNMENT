@@ -8,13 +8,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Asus
  */
 public class paymentGuestGUI extends javax.swing.JFrame {
     private static int guestId;
-    private static String movie,time,date,hall,seats,fnb;
+    private static String movie,time,date,hall,seats,fnb,priceSeat;
     private static double totalPayment;
     private static String text;
 
@@ -24,6 +25,11 @@ public class paymentGuestGUI extends javax.swing.JFrame {
     public paymentGuestGUI() {
         initComponents();
     }
+
+    public void setPriceSeat(String priceSeat) {
+        this.priceSeat = priceSeat;
+    }
+
 
     public void setGuestId(int guestId) {
         this.guestId = guestId;
@@ -189,13 +195,14 @@ public class paymentGuestGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int priceFnb = 0;
         try{
            
 
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             System.out.println("Database connected!");
             Statement myStmt = connection.createStatement();
-            // CREATE QUERY INSTRUCTIONS
+            // CREATE QUERY INSTRUCTIONS IDK MAN
             String sql = "INSERT INTO booking "
                     + "(guest_id,movie_name,time,date,hall_name,seats,fnb_id) "
                     + "VALUES ('"+String.valueOf(guestId)+"','"+movie+"','"+time+"','"+date+"','"+hall+"','"+seats+"','"+fnb+"')";
@@ -206,6 +213,34 @@ public class paymentGuestGUI extends javax.swing.JFrame {
                 SQLException e){
 
         }
+        try  {
+            // CREATE CONNECTION WITH DATABASE
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
+            System.out.println("Database connected!");
+            // CREATE STATEMENT FOR MYSQL
+            Statement myStmt = connection.createStatement();
+            // CREATE QUERY
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM foodnbeverages");
+            // FIND EQUAL USERNAME AND PASSWORD
+            String totalFnb[] = fnb.split(",");
+            for(int i=0;i<totalFnb.length;i++){
+                while (myRs.next()) {
+                    if(String.valueOf(myRs.getInt("combo_id")).equals(totalFnb[i])){
+                        priceFnb+=Integer.valueOf(myRs.getString("price"));
+                    }
+                }
+            }
+            connection.close();
+        } catch (
+                SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        
+        String seatSplit[] = seats.split(",");
+        double totalPriceSeat = seatSplit.length*Integer.valueOf(priceSeat);
+        System.out.println("seat: "+totalPriceSeat);
+        System.out.println("fnb: "+priceFnb);
+        totalPayment = totalPriceSeat+priceFnb;
         text = String.valueOf(totalPayment);
         jLabel2.setText(text);
     }//GEN-LAST:event_jButton2ActionPerformed

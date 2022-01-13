@@ -161,6 +161,31 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String screening = screening_id.getText();
+        String priceSeat = "";
+        try  {
+            // CREATE CONNECTION WITH DATABASE
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
+            System.out.println("Database connected!");
+ 
+            // CREATE STATEMENT FOR MYSQL
+            Statement myStmt = connection.createStatement();
+            // CREATE QUERY
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
+            // FIND EQUAL USERNAME AND PASSWORD
+            while (myRs.next()) {
+                if (myRs.getString("screening_id").equals(screening)) {
+                    System.out.println("AYO");
+                    priceSeat = String.valueOf(myRs.getInt("screening_id"));
+                    break;
+                }
+            }
+            paymentGuestGUI c = new paymentGuestGUI();
+            c.setPriceSeat(priceSeat);
+            connection.close();
+        } catch (
+                SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        }
         pickSeatCustGUI a = new pickSeatCustGUI();
         a.setScreeningId(Integer. valueOf(screening));
         a.show();
