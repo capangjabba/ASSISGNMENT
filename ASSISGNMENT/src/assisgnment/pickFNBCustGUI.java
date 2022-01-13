@@ -127,12 +127,10 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
         try  {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM foodnbeverages");
-            // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 String id = String.valueOf(myRs.getInt("combo_id"));
                 String combo = myRs.getString("combo_name");

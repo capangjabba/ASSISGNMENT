@@ -151,16 +151,11 @@ public class loginGuestGUI extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         try  {
-            // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
-            // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
-            // CREATE QUERY
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM guest");
             String username = usernameText.getText();
             String password = passwordText.getText();
-            // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
                     int guest_id = myRs.getInt("guest_id");

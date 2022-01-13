@@ -136,7 +136,6 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
             Statement myStmt = connection.createStatement();
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
             while(myRs.next()){
@@ -146,9 +145,7 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
                     time=myRs.getString("time");
                 }
             }
-            myRs.close();
-            System.out.println(hall+" "+date+" "+time);
-            
+            myRs.close();            
             ResultSet myRs2 = myStmt.executeQuery("SELECT * FROM availability");
             while(myRs2.next()){
                 if(myRs2.getString("hall_name").equals(hall) && myRs2.getString("time").equals(time) && myRs2.getString("date").equals(date)){
@@ -180,7 +177,6 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
                 String sql = "DELETE FROM availability where hall_name='" + hall
                             + "' AND date = '" + date + "' AND time = '" + time + "'AND seat_name = '"+ i + "' ";
                 myStmt.executeUpdate(sql);
-                System.out.println(i);
             }
             //ENTER FNB
             pickFNBCustGUI a = new pickFNBCustGUI();

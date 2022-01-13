@@ -134,7 +134,6 @@ public class movieCustGUI extends javax.swing.JFrame {
         try  {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
@@ -145,7 +144,7 @@ public class movieCustGUI extends javax.swing.JFrame {
                 String title = myRs.getString("movie_name");
                 String description = myRs.getString("description");
                 String cast = myRs.getString("cast");
-                String date = String.valueOf(myRs.getDate("release_date"));
+                String date = myRs.getString("release_date");
                 String tbData[]={id,title,description,cast,date};
                 DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
                 tblModel.addRow(tbData);

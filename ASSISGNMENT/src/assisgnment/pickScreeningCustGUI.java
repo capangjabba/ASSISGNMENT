@@ -129,13 +129,10 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
         try  {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
- 
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
-            // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 if (myRs.getString("movie_name").equals(NAME)) {
                     System.out.println("WE IN");
@@ -164,18 +161,14 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
         String priceSeat = "";
         try  {
             // CREATE CONNECTION WITH DATABASE
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            System.out.println("Database connected!");
- 
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002"); 
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
-            // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 if (myRs.getString("screening_id").equals(screening)) {
-                    System.out.println("AYO");
-                    priceSeat = String.valueOf(myRs.getInt("screening_id"));
+                    priceSeat = String.valueOf(myRs.getInt("price"));
                     break;
                 }
             }
