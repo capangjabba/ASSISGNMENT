@@ -42,6 +42,8 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
         comboNameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         priceTextField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        descTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +52,7 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "combo id", "combo name", "Title 3"
+                "combo id", "combo name", "price", "desc"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -75,6 +77,8 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
 
         jLabel3.setText("PRICE");
 
+        jLabel4.setText("DESCRIPTION");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,8 +94,10 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(priceTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
-                        .addComponent(comboNameTextField, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addComponent(comboNameTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel4)
+                    .addComponent(descTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
@@ -110,9 +116,13 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(priceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
                 .addGap(18, 18, 18)
+                .addComponent(descTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(jButton1)
-                .addGap(152, 152, 152))
+                .addGap(80, 80, 80))
         );
 
         pack();
@@ -133,7 +143,8 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
                 String id = String.valueOf(myRs.getInt("combo_id"));
                 String comboName = myRs.getString("combo_name");
                 String price = myRs.getString("price");
-                String tbData[]={id,comboName,price};
+                String desc = myRs.getString("description");
+                String tbData[]={id,comboName,price,desc};
                 DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
                 tblModel.addRow(tbData);
                 
@@ -154,9 +165,9 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
             System.out.println("Database connected!");
             Statement myStmt = connection.createStatement();
             // CREATE QUERY INSTRUCTIONS
-            String sql = "INSERT INTO foodNBeverages "
-                    + "(combo_name,price) "
-                    + "VALUES ('"+comboNameTextField.getText()+"','"+priceTextField.getText()+"')";
+            String sql = "INSERT INTO foodnbeverages "
+                    + "(combo_name,price,description) "
+                    + "VALUES ('"+comboNameTextField.getText()+"','"+priceTextField.getText()+"','"+descTextField.getText()+"')";
             myStmt.executeUpdate(sql);
             System.out.println("REGISTERED");
             connection.close();
@@ -203,11 +214,13 @@ public class addFNBStaffGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField comboNameTextField;
+    private javax.swing.JTextField descTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField priceTextField;
