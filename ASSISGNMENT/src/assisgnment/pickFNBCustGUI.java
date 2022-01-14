@@ -60,7 +60,7 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "COMBO_NAME", "PRICE"
+                "ID", "COMBO_NAME", "PRICE", "DESC"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -86,19 +86,18 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboText, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel2)
-                    .addComponent(comboText)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 148, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addGap(8, 8, 8)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 662, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addGap(8, 111, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(296, 296, 296))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +112,7 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(comboText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addGap(76, 76, 76)
                         .addComponent(jButton2)
                         .addContainerGap())
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)))
@@ -135,7 +134,8 @@ public class pickFNBCustGUI extends javax.swing.JFrame {
                 String id = String.valueOf(myRs.getInt("combo_id"));
                 String combo = myRs.getString("combo_name");
                 String price = myRs.getString("price");
-                String tbData[]={id,combo,price};
+                String description = myRs.getString("description");
+                String tbData[]={id,combo,price,description};
                 DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
                 tblModel.addRow(tbData);
             }
