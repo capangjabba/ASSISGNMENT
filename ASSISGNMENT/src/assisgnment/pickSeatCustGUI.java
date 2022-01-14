@@ -146,7 +146,7 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
                 }
             }
             myRs.close();            
-            ResultSet myRs2 = myStmt.executeQuery("SELECT * FROM availability");
+            ResultSet myRs2 = myStmt.executeQuery("SELECT * FROM availability ORDER BY seat_name");
             while(myRs2.next()){
                 if(myRs2.getString("hall_name").equals(hall) && myRs2.getString("time").equals(time) && myRs2.getString("date").equals(date)){
                     String seat = myRs2.getString("seat_name");

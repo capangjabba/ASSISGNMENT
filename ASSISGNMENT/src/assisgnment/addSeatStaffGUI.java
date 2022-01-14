@@ -147,7 +147,7 @@ public class addSeatStaffGUI extends javax.swing.JFrame {
             // CREATE STATEMENT FOR MYSQL
             Statement myStmt = connection.createStatement();
             // CREATE QUERY
-            ResultSet myRs = myStmt.executeQuery("SELECT * FROM seat WHERE hall_name = '"+hall+"'");
+            ResultSet myRs = myStmt.executeQuery("SELECT * FROM seat WHERE hall_name = '"+hall+"' ORDER BY seat_name");
             // FIND EQUAL USERNAME AND PASSWORD
             while (myRs.next()) {
                 String id = String.valueOf(myRs.getInt("seat_id"));
