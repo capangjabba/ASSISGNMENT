@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -171,6 +172,8 @@ public class loginGuestGUI extends javax.swing.JFrame {
                     dispose();
                 }
             }
+        JOptionPane.showMessageDialog(this,"Wrong password or username.");
+
 
         } catch (
                 SQLException e) {
