@@ -155,6 +155,7 @@ public class loginGuestGUI extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        boolean flag = true;
         try  {
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             Statement myStmt = connection.createStatement();
@@ -164,6 +165,7 @@ public class loginGuestGUI extends javax.swing.JFrame {
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
                     int guest_id = myRs.getInt("guest_id");
+                    flag=false;
                     paymentGuestGUI b = new paymentGuestGUI();
                     b.setGuestId(guest_id);
                     // GOT INTO SYSTEM
@@ -172,13 +174,14 @@ public class loginGuestGUI extends javax.swing.JFrame {
                     dispose();
                 }
             }
-        JOptionPane.showMessageDialog(this,"Wrong password or username.");
-
-
         } catch (
                 SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
+        if (flag) {
+            JOptionPane.showMessageDialog(this,"Wrong password or username.");
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

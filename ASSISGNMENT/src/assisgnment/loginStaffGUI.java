@@ -153,6 +153,7 @@ public class loginStaffGUI extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        boolean flag = true;
         try  {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
@@ -167,16 +168,19 @@ public class loginStaffGUI extends javax.swing.JFrame {
             while (myRs.next()) {
                 if (myRs.getString("username").equals(username) && myRs.getString("password").equals(password)) {
                     System.out.println("WE IN"); // GOT INTO SYSTEM  balbalsdbad
+                    flag=false;
                     staffMainPageGUI a = new staffMainPageGUI();
                     a.show();
                     dispose();
                 }
             }
-            JOptionPane.showMessageDialog(this,"Wrong password or username.");
 
         } catch (
                 SQLException e) {
             throw new IllegalStateException("Cannot connect the database!", e);
+        }
+        if (flag) {
+            JOptionPane.showMessageDialog(this,"Wrong password or username.");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
