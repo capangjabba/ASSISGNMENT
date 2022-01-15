@@ -374,13 +374,10 @@ public class paymentGuestGUI extends javax.swing.JFrame {
             Statement myStmt = connection.createStatement();
             String totalFnb[] = fnb.split(",");
             for(int i=0;i<totalFnb.length;i++){
-                System.out.println("fnb id: "+totalFnb[i]);
                 ResultSet myRs = myStmt.executeQuery("SELECT * FROM foodnbeverages");
                 while (myRs.next()) {
                     if(String.valueOf(myRs.getInt("combo_id")).equals(totalFnb[i])){
                         priceFnb+=Integer.valueOf(myRs.getString("price"));
-                        System.out.println("price:"+myRs.getString("price"));
-                        System.out.println(priceFnb);
                     }
                 }
             }
@@ -391,11 +388,7 @@ public class paymentGuestGUI extends javax.swing.JFrame {
         }
         
         String seatSplit[] = seats.split(",");
-        System.out.println("Price seat: "+priceSeat);
-        System.out.println("Length"+seatSplit.length);
         double totalPriceSeat = seatSplit.length*Integer.valueOf(priceSeat);
-        System.out.println("seat: "+totalPriceSeat);
-        System.out.println("fnb: "+priceFnb);
         totalPayment = totalPriceSeat+priceFnb;
         text = String.valueOf("RM"+totalPayment);
         FnbTotalLabel.setText(fnb+" RM"+priceFnb);
