@@ -134,7 +134,7 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
             // CREATE QUERY
             ResultSet myRs = myStmt.executeQuery("SELECT * FROM screening");
             while (myRs.next()) {
-                if (myRs.getString("movie_name").equals(NAME)) {
+                if (myRs.getString("movie_name").equalsIgnoreCase(NAME)) {
                     System.out.println("WE IN");
                     String id = String.valueOf(myRs.getInt("screening_id"));
                     String title = myRs.getString("movie_name");
