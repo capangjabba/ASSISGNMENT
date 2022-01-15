@@ -367,19 +367,6 @@ public class paymentGuestGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int priceFnb = 0;
-        try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
-            Statement myStmt = connection.createStatement();
-            // CREATE QUERY INSTRUCTIONS IDK MAN
-            String sql = "INSERT INTO booking "
-                    + "(guest_id,movie_name,time,date,hall_name,seats,fnb_id) "
-                    + "VALUES ('"+String.valueOf(guestId)+"','"+movie+"','"+time+"','"+date+"','"+hall+"','"+seats+"','"+fnb+"')";
-            myStmt.executeUpdate(sql);
-            connection.close();
-        }catch(
-                SQLException e){
-
-        }
         try  {
             // CREATE CONNECTION WITH DATABASE
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
@@ -425,6 +412,19 @@ public class paymentGuestGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
+            Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
+            Statement myStmt = connection.createStatement();
+            // CREATE QUERY INSTRUCTIONS IDK MAN
+            String sql = "INSERT INTO booking "
+                    + "(guest_id,movie_name,time,date,hall_name,seats,fnb_id) "
+                    + "VALUES ('"+String.valueOf(guestId)+"','"+movie+"','"+time+"','"+date+"','"+hall+"','"+seats+"','"+fnb+"')";
+            myStmt.executeUpdate(sql);
+            connection.close();
+        }catch(
+                SQLException e){
+
+        }
         ticketsGuestGUI yeah=new ticketsGuestGUI();
         yeah.setText(String.valueOf(guestId),movie,time,date,hall,seats,fnb);
         yeah.show();
