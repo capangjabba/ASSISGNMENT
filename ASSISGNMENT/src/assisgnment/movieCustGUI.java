@@ -159,8 +159,9 @@ public class movieCustGUI extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String Name = movieNameText.getText(); //movie name
+        
         paymentGuestGUI b = new paymentGuestGUI();
-        b.setMovie(Name);
+        b.setMovie(Name.toUpperCase());
         pickScreeningCustGUI a = new pickScreeningCustGUI();
         a.setNAME(Name);
         a.show();
