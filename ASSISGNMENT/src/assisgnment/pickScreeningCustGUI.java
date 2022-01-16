@@ -138,7 +138,7 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
                     String id = String.valueOf(myRs.getInt("screening_id"));
                     String title = myRs.getString("movie_name");
                     String time = myRs.getString("time");
-                    String date = String.valueOf(myRs.getDate("date"));
+                    String date = myRs.getString("date");
                     String price = myRs.getString("price");
                     String classHall = myRs.getString("class");
                     String tbData[]={id,title,time,date,price,classHall};
@@ -179,7 +179,7 @@ public class pickScreeningCustGUI extends javax.swing.JFrame {
             throw new IllegalStateException("Cannot connect the database!", e);
         }
         pickSeatCustGUI a = new pickSeatCustGUI();
-        a.setScreeningId(Integer. valueOf(screening));
+        a.setScreeningId(Integer.valueOf(screening));
         a.show();
         dispose();
         // call next page

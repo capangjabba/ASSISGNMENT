@@ -278,7 +278,8 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             Statement myStmt = connection.createStatement();
             for(String i:seats){
-                i.toUpperCase();
+                i = i.toUpperCase();
+                i = i.trim();
                 String sql = "DELETE FROM availability where hall_name='" + hall
                             + "' AND date = '" + date + "' AND time = '" + time + "'AND seat_name = '"+ i + "' ";
                 myStmt.executeUpdate(sql);
