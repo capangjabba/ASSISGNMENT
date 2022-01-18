@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -277,17 +278,34 @@ public class pickSeatCustGUI extends javax.swing.JFrame {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/capang_screen_cinema", "root", "18102002");
             Statement myStmt = connection.createStatement();
+            int check=0;
             for(String i:seats){
                 i = i.toUpperCase();
                 i = i.trim();
-                String sql = "DELETE FROM availability where hall_name='" + hall
+                ResultSet myRs = myStmt.executeQuery("SELECT * FROM availability");
+                while(myRs.next()){
+                    if(i.equals(myRs.getString("seat_name"))&& hall.equals(myRs.getString("hall_name"))&&date.equals(myRs.getString("date"))&&time.equals(myRs.getString("time"))){
+//                        String sql = "DELETE FROM availability where hall_name='" + hall
+//                            + "' AND date = '" + date + "' AND time = '" + time + "'AND seat_name = '"+ i + "' ";
+//                        myStmt.executeUpdate(sql);
+                        check++;
+                    }
+                }
+            }
+            if(check==seats.length){
+                for(String i:seats){
+                    String sql = "DELETE FROM availability where hall_name='" + hall
                             + "' AND date = '" + date + "' AND time = '" + time + "'AND seat_name = '"+ i + "' ";
-                myStmt.executeUpdate(sql);
+                    myStmt.executeUpdate(sql);
+                }
+                pickFNBCustGUI a = new pickFNBCustGUI();
+                a.show();
+                dispose();
+            }else{
+                JOptionPane.showMessageDialog(this,"SEAT UNAVAILABLE");
             }
             //ENTER FNB
-            pickFNBCustGUI a = new pickFNBCustGUI();
-            a.show();
-            dispose();
+            
         }catch(Exception exc){
                 exc.printStackTrace();
         }
